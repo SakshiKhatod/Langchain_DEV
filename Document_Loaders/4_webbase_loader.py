@@ -10,8 +10,8 @@ llm = HuggingFaceEndpoint(
 )
 model = ChatHuggingFace(llm=llm)
 
-# url = "https://www.allaboutvlsi.com/apb-protocol"
-url = "https://github.com/campusx-official/langchain-document-loaders/blob/main/dl-curriculum.pdf"
+url = "https://www.allaboutvlsi.com/apb-protocol"
+# url = "https://github.com/campusx-official/langchain-document-loaders/blob/main/dl-curriculum.pdf"
 loader = WebBaseLoader(url)
 data = loader.load()
 # print(data[0].page_content)
@@ -44,10 +44,18 @@ chain = prompt | model | parser
 # )
 
 
+# print(
+#     chain.invoke(
+#         {
+#             "question": "What is the summary that we are talking about?",
+#             "text": data[0].page_content,
+#         }
+#     )
+# )
 print(
     chain.invoke(
         {
-            "question": "What is the summary that we are talking about?",
+            "question": "What is the deep learning in AI",
             "text": data[0].page_content,
         }
     )
